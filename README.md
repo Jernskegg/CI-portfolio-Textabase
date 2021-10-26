@@ -15,11 +15,15 @@ As a user I want to make a comment on a post.
 
 As a user I want to upvote a comment I like.
 
+As a User I want to edit my post to correct written errors.
+
+As a User I want to check certain types of posts
+
 As a User I want to make a post to share my thoughts.
 
-As a Admin I want to remove a post that broke the board rules.
+As an Admin I want to remove a post that broke the board rules.
 
-As a Admin I want to edit a post to fix a post.
+As an Admin I want to edit a post to fix a post.
 
 
 # Features
