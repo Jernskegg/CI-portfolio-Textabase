@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://textabase.herokuapp.com/', 'localhost']
 
 
 # Application definition
