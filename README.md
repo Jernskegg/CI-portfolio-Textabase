@@ -37,7 +37,7 @@ As an Admin I want to edit a post to fix a post.
 like make fast and loose wireframes using a mobile first approach to speed up planning, Whilst leaving room for improvments and also room for disscusion with the "Customer", Like an Agile approach being able to itterate using the wireframe as a base and then work towards the goal. alltho this may lead to Feature creep so you need to be strict.
 
 I've chosen to work with a darker colour scheme, So that catergory colours can pop. And the target group are game enthusiasts, And this will hopefully be on their second screen so a darker colour means less distraction from the game in intense momemnts.
-![wireframe](.\docs\wireframes\wireframe.png)
+![wireframe](docs/wireframes/wireframe.png)
 
 ## Diagrams
 ![Model_diagram](docs/diagrams/model_diagram.png)
