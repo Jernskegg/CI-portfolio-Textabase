@@ -7,7 +7,9 @@ Full-Stack Development course (5p) | Portfolio project 4 (Django focused project
 
 # Purpose of the Project
 
-The project aims to make a forum/thread based web page with possibility to comment upvote, downvote posts.
+The project aims to make a forum/thread based web page with possibility to comment upvote, downvote posts. 
+
+The idea of this page is that it created for a gaming community where users can socialize and have fun.
 
 # User Stories
 
@@ -25,8 +27,20 @@ As an Admin I want to remove a post that broke the board rules.
 
 As an Admin I want to edit a post to fix a post.
 
-
 # Features
+
+
+# Design and planning
+
+## wireframes
+
+like make fast and loose wireframes using a mobile first approach to speed up planning, Whilst leaving room for improvments and also room for disscusion with the "Customer", Like an Agile approach being able to itterate using the wireframe as a base and then work towards the goal. alltho this may lead to Feature creep so you need to be strict.
+
+I've chosen to work with a darker colour scheme, So that catergory colours can pop. And the target group are game enthusiasts, And this will hopefully be on their second screen so a darker colour means less distraction from the game in intense momemnts.
+![wireframe](.\docs\wireframes\wireframe.png)
+
+## Diagrams
+![Model_diagram](docs/diagrams/model_diagram.png)
 
 # Technology
 
@@ -34,11 +48,18 @@ As an Admin I want to edit a post to fix a post.
 
 Python is an easy and basic programming language, but it is powerful with libraries to bring out capabilities to use in multiple
 
+## Django Framework
+
+Django is a framework that is made to speed up the proccess of building web applications, Here you can make apps and then use the apps for different projects. it has en extensive documentation.
+
 # testing
 
 ## code validation
 
 ## fixed bugs and issues found.
+
+  - I had started of the projects with capitalization at some point and gave me error, I fixed this by going through logs and concluded where the Capitlization happend.
+  - I have made an initial commit of starting Django where it posted the insecure SECRET_KEY, It was going to be changed and put into a secret file hidden with ".gitignore", therefor I didn't take the time to hide it.
 
 # Deployment
 
