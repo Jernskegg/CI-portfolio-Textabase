@@ -5,6 +5,6 @@ from .models import thread, comment
 
 class threadList(generic.ListView):
     model = thread
-    queryset = thread.objects.order_by('-posted_on')
+    queryset = thread.objects.order_by('-date_posted')
     template_name = 'threads.html'
     paginate_by = 6

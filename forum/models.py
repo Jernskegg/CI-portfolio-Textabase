@@ -44,7 +44,7 @@ class comment(models.Model):
                                             related_name="comment_upvotes",
                                             blank=True, default=False)
     class Meta:
-        ordering = ['-posted_on']
+        ordering = ['-date_posted']
 
     def __str__(self):
         return str(self.comment_content) + str(self.comment_atached_to)
