@@ -43,6 +43,8 @@ class comment(models.Model):
     comment_upvote = models.ManyToManyField(User,
                                             related_name="comment_upvotes",
                                             blank=True, default=False)
+    class Meta:
+        ordering = ['-posted_on']
 
     def __str__(self):
         return str(self.comment_content) + str(self.comment_atached_to)
