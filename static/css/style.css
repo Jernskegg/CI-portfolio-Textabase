@@ -1,0 +1,9 @@
+.hero-container {
+    overflow: hidden;
+    height: 250px;
+}
+
+.hero-image {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgb(33,37,41)), url("../images/town.png");
+    background-position: 50% 35%;
+}
