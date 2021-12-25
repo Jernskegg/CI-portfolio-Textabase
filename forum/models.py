@@ -43,6 +43,7 @@ class comment(models.Model):
     comment_upvote = models.ManyToManyField(User,
                                             related_name="comment_upvotes",
                                             blank=True, default=False)
+
     class Meta:
         ordering = ['-date_posted']
 
