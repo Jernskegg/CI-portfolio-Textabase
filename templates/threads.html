@@ -1,5 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="row justify-content-center">
+{% for thread in thread_list %}
+<div class="col-10 col-xl-4 justify-content-center text-white m-2">
+    <div class="row">
+        <div class="row g-0">
+            <div class="col">
+                <hr class="catergory-line catergory-{{ thread.catergories }}">
+                <hr class="catergory-spacer">
+            </div>
+        </div>
+        <div class="bg-custom-thread">
+            <div class="row mb-3 mt-1">
+                <div class="col">
+                    <h3>{{ thread.title }}</h3>
+                </div>
+                <div class="col">
+                    <p class="float-end fs-custom-date">posted: {{ thread.date_posted }}</p>
+                </div>
+            </div>
+            <div class="row mb-1 mt-1">
+                <div class="col">
+                    {% if thread.content|length >= 60 %}
+                    <p>{{ thread.content|truncatewords:"60" }}...</p>
+                    {% else %}
+                    <p>{{ thread.content }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row mb-2 mt-5">
+                <div class="col">
+                    -{{ thread.thread_starter }}
+                </div>
+                <div class="col text-center">
+                    read more...
+                </div>
+                <div class="col">
+                    <div class="float-end">
+                        {{ thread.upvoted }}
+                        <i class="fas fa-heart"></i>
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
 {%endblock%}

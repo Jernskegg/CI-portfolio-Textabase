@@ -4,6 +4,45 @@
 }
 
 .hero-image {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgb(33,37,41)), url("../images/town.png");
+    background: linear-gradient(rgba(0, 0, 0, 0), rgb(33, 37, 41)), url("../images/town.png");
     background-position: 50% 35%;
+}
+/* thread style */
+.bg-custom-thread {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.fs-custom-date {
+    font-size: 12px
+}
+
+/* categories bar */
+.catergory-line {
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+.catergory-spacer {
+    margin: 0;
+    padding: 0;
+    padding-top: 0;
+    margin-bottom: 1px;
+    opacity: 0;
+}
+
+.catergory-GEN {
+    background: rgba(0, 255, 0, 1);
+}
+
+.catergory-BUG {
+    background: rgb(255, 0, 0, 1);
+}
+
+.catergory-BAN {
+    background: rgb(229, 255, 0);
+}
+
+.catergory-GAM {
+    background: rgb(0, 128, 255);
 }
