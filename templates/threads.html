@@ -1,52 +1,87 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row justify-content-center">
-{% for thread in thread_list %}
-<div class="col-10 col-xl-4 justify-content-center text-white m-2">
-    <div class="row">
-        <div class="row g-0">
-            <div class="col">
-                <hr class="catergory-line catergory-{{ thread.catergories }}">
-                <hr class="catergory-spacer">
-            </div>
-        </div>
-        <div class="bg-custom-thread">
-            <div class="row mb-3 mt-1">
+<!-- repeated thread boxes -->
+<div class="row justify-content-center mb-5 g-0">
+    {% for thread in thread_list %}
+    <article class="col-10 col-xl-4 justify-content-center text-white m-2 g-4">
+        <div class="row">
+            <div class="row g-0">
                 <div class="col">
-                    <h3>{{ thread.title }}</h3>
-                </div>
-                <div class="col">
-                    <p class="float-end fs-custom-date">posted: {{ thread.date_posted }}</p>
+                    <hr class="catergory-line catergory-{{ thread.catergories }}">
+                    <hr class="catergory-spacer">
                 </div>
             </div>
-            <div class="row mb-1 mt-1">
-                <div class="col">
-                    {% if thread.content|length >= 60 %}
-                    <p>{{ thread.content|truncatewords:"60" }}...</p>
-                    {% else %}
-                    <p>{{ thread.content }}</p>
-                    {% endif %}
+            <div class="bg-custom-thread">
+                <div class="row mb-3 mt-1">
+                    <div class="col">
+                        <h3>{{ thread.title }}</h3>
+                    </div>
+                    <div class="col">
+                        <p class="float-end fs-custom-date">posted: {{ thread.date_posted }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-2 mt-5">
-                <div class="col">
-                    -{{ thread.thread_starter }}
+                <div class="row mb-1 mt-1">
+                    <div class="col">
+                        {% if thread.content|length >= 60 %}
+                        <p>{{ thread.content|truncatewords:"60" }}...</p>
+                        {% else %}
+                        <p>{{ thread.content }}</p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col text-center">
-                    read more...
-                </div>
-                <div class="col">
-                    <div class="float-end">
-                        {{ thread.upvoted }}
-                        <i class="fas fa-heart"></i>
-                        <i class="far fa-heart"></i>
+                <div class="row mb-2 mt-5">
+                    <div class="col">
+                        -{{ thread.thread_starter }}
+                    </div>
+
+                    <div class="col text-center">
+                        read more...
+                    </div>
+
+                    <div class="col">
+                        <div class="float-end">
+                            {{ thread.upvoted }}
+                            <i class="fas fa-heart"></i>
+                            <i class="far fa-heart"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
+    {% endfor %}
 </div>
-{% endfor %}
-</div>
+<!-- site pagination -->
+<ul class="pagination text-white justify-content-center">
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <span class="page-link">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+    </li>
+    {% endif %}
+    <li class="page-item">
+        <span class="page-link">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+    </li>
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <span class="page-link">
+            <i class="fas fa-arrow-right"></i>
+        </span>
+    </li>
+    {% endif %}
+    {% endif %}
+</ul>
 {%endblock%}
