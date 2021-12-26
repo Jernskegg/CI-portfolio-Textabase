@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<section class="container">
+    <div class="row justify-content-center mb-2">
+        <h3 class="col-12 col-xl-5 text-white text-center">Hello {{ user.username }}!</h3>
+    </div>
+    <div class="row justify-content-center mb-2 mb-xl-4">
+            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-plus"></i> new thread</a>
+            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-book"></i> my threads</a>
+            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-heart"></i> upvoted</a>
+            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-comment-alt"></i> my comments</a>
+    </div>
+</section>
+{% endif %}
 <!-- repeated thread boxes -->
-<div class="row justify-content-center mb-5 g-0">
+<section class="row justify-content-center mb-5 g-0">
     {% for thread in thread_list %}
     <article class="col-10 col-xl-4 justify-content-center text-white m-2 g-4">
         <div class="row">
@@ -36,7 +49,7 @@
                     </div>
 
                     <div class="col text-center">
-                        read more...
+                        <a href="">read more...</a> 
                     </div>
 
                     <div class="col">
@@ -51,7 +64,7 @@
         </div>
     </article>
     {% endfor %}
-</div>
+</section>
 <!-- site pagination -->
 <ul class="pagination text-white justify-content-center">
     {% if is_paginated %}

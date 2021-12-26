@@ -33,15 +33,11 @@
             <a href="{% url 'account_logout' %}" class="btn btn-warning float-end me-2">
                 Sign out
             </a>
-            <a href="#" class="float-end me-2 link-white">
-                <p>hello! {{ user.username }}</p>
-            </a>
             {% else %}
             <a href="{% url 'account_login' %}" class="btn btn-warning float-end me-2">
                 Sign in
             </a>
             {% endif %}
-        </div>
     </nav>
 
     <section class="hero-container hero-image mb-5">
