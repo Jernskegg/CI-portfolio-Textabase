@@ -24,14 +24,13 @@ class thread(models.Model):
                                        related_name='thread_post')
     date_posted = models.DateTimeField(auto_now=True, editable=False)
     content = models.TextField()
-    excerpt = models.TextField(blank=True)
     upvote = models.ManyToManyField(User, related_name="thread_upvotes",
                                     blank=True, default=False)
 
     def __str__(self):
         return self.title
 
-    def upvoted(self):
+    def times_upvoted(self):
         return self.upvote.count()
 
 
@@ -50,5 +49,5 @@ class comment(models.Model):
     def __str__(self):
         return str(self.comment_content) + str(self.comment_atached_to)
 
-    def upvoted(self):
-        return self.upvote.count()
+    def times_upvoted(self):
+        return self.comment_upvote.count()
