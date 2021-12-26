@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
+{% load my_filters %}
+
 {% block content %}
-{% if user.is_authenticated %}
-{% endif %}
 <!-- post section -->
 <section class="container">
     <div class="row text-white justify-content-center">
@@ -12,8 +12,8 @@
                 <hr class="catergory-spacer">
             </div>
         </div>
-        <div class="col-2 text-center bg-custom-thread pt-5">{{ thread_view.thread_starter }}</div>
-        <div class="col-7 p-5 bg-custom-thread">
+        <div class="col-10 col-xl-2 text-center bg-custom-thread pt-5">{{ thread_view.thread_starter }}</div>
+        <div class="col-9 col-xl-7 p-5 bg-custom-thread">
             <div class="row">
                 <h3>{{ thread_view.title }}</h3>
             </div>
@@ -27,21 +27,34 @@
     </div>
 </section>
 <!-- make a comment section -->
+{% if user.is_authenticated %}
 <section class="container mt-3">
-    <div class="row">
-        <div class="row justify-content-center g-0">
-            <div class="col-10">
+        <div class="row justify-content-center">
+            <div class="col-10 pe-0 ps-0">
                 <hr class="catergory-line catergory-{{ thread_view.catergories }}">
                 <hr class="catergory-spacer">
             </div>
         </div>
-        <div class="row bg-custom-thread">
-            <form class="col-10" action="comment" method="post">
-                <p class="text-white">test</p>
-            </form>
-        </div>
-    </div>
+
+        <form method="post">
+            <div class="row justify-content-center">
+                <div class="col-10 bg-custom-thread p-2">
+                    {% csrf_token %}
+                    {% for field in comment_form %}
+                    <div class="col">
+                        {{field|addclass:'mt-2 text-custom-box' }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 bg-custom-thread  p-2 pt-0">
+                    <button class="btn btn-warning float-end" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
 </section>
+{% endif %}
 <!-- Comment section -->
 <section class="container">
 

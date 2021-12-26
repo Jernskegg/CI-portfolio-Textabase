@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import thread
+from .forms import commentForm
 # Create your views here.
 
 
@@ -27,6 +28,7 @@ class threadPage(View):
             {
                 "thread_view": thread_view,
                 "comments": comments,
-                "upvoted": upvoted
+                "upvoted": upvoted,
+                "comment_form": commentForm,
             }
         )

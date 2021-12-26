@@ -46,3 +46,9 @@
 .catergory-GAM {
     background: rgb(0, 128, 255);
 }
+
+/* Input box*/
+.text-custom-box {
+    width: 100%;
+    height: 100px;
+}
