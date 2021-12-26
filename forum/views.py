@@ -16,9 +16,9 @@ class threadPage(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = thread.objects
         thread_view = get_object_or_404(queryset, slug=slug)
-        comments = thread.comment.order_by('comment_posted')
+        comments = thread_view.comments.order_by("-date_posted")
         upvoted = False
-        if thread.upvote.filter(id=self.request.user.id).exists():
+        if thread_view.upvote.filter(id=self.request.user.id).exists():
             upvoted = True
 
         return render(

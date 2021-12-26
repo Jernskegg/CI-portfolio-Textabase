@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% endif %}
+<!-- post section -->
+<section class="container">
+    <div class="row text-white justify-content-center">
+        <div class="row justify-content-center g-0">
+            <div class="col-10">
+                <hr class="catergory-line catergory-{{ thread_view.catergories }}">
+                <hr class="catergory-spacer">
+            </div>
+        </div>
+        <div class="col-2 text-center bg-custom-thread pt-5">{{ thread_view.thread_starter }}</div>
+        <div class="col-7 p-5 bg-custom-thread">
+            <div class="row">
+                <h3>{{ thread_view.title }}</h3>
+            </div>
+            <div class="row">
+                <p>{{ thread_view.content }}</p>
+            </div>
+        </div>
+        <div class="col-1 bg-custom-thread">
+            <p class="text-white float-end pt-3"><i class="fas fa-ellipsis-v"></i></p>
+        </div>
+    </div>
+</section>
+<!-- make a comment section -->
+<section class="container mt-3">
+    <div class="row">
+        <div class="row justify-content-center g-0">
+            <div class="col-10">
+                <hr class="catergory-line catergory-{{ thread_view.catergories }}">
+                <hr class="catergory-spacer">
+            </div>
+        </div>
+        <div class="row bg-custom-thread">
+            <form class="col-10" action="comment" method="post">
+                <p class="text-white">test</p>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Comment section -->
+<section class="container">
+
+    {% for comment in comments %}
+    <div class="row mt-3 mb-3 justify-content-center">
+        <div class="row justify-content-center g-0">
+            <div class="col-10">
+                <hr class="catergory-line catergory-{{ thread_view.catergories }}">
+                <hr class="catergory-spacer">
+            </div>
+        </div>
+        <div class="col-2 bg-custom-thread">
+            <div class="col">
+                <p class="text-white mt-3">{{comment.comment_posted_by }}</p>
+            </div>
+        </div>
+        <div class="col-7 bg-custom-thread">
+            <div class="row mt-3">
+                <p class="text-white">said:</p>
+            </div>
+            <div class="row">
+                <p class="text-white">{{comment.comment_content }}</p>
+            </div>
+        </div>
+        <div class="col-1 bg-custom-thread">
+            <p class="text-white float-end pt-3"><i class="fas fa-ellipsis-v"></i></p>
+        </div>
+        <div class="col-10 bg-custom-thread">
+            <div class="row justify-content-center">
+                <p class="text-white fs-custom-date">
+                    posted: {{ comment.date_posted}}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{%endblock%}

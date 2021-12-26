@@ -27,6 +27,9 @@ class thread(models.Model):
     upvote = models.ManyToManyField(User, related_name="thread_upvotes",
                                     blank=True, default=False)
 
+    class Meta:
+        ordering = ["-date_posted"]
+
     def __str__(self):
         return self.title
 
@@ -36,7 +39,8 @@ class thread(models.Model):
 
 class comment(models.Model):
     comment_posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment_atached_to = models.ForeignKey(thread, on_delete=models.CASCADE)
+    comment_atached_to = models.ForeignKey(thread, on_delete=models.CASCADE,
+                                           related_name="comments")
     date_posted = models.DateTimeField(auto_now=True, editable=False)
     comment_content = models.TextField(max_length=255)
     comment_upvote = models.ManyToManyField(User,
@@ -44,7 +48,7 @@ class comment(models.Model):
                                             blank=True, default=False)
 
     class Meta:
-        ordering = ['-date_posted']
+        ordering = ["-date_posted"]
 
     def __str__(self):
         return str(self.comment_content) + str(self.comment_atached_to)
