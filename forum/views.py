@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import thread
 from .forms import commentForm
@@ -28,6 +29,42 @@ class threadPage(View):
             {
                 "thread_view": thread_view,
                 "comments": comments,
+                "commented": False,
+                "upvoted": upvoted,
+                "comment_form": commentForm,
+            }
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        print(args, kwargs)
+        queryset = thread.objects
+        thread_view = get_object_or_404(queryset, slug=slug)
+        comments = thread_view.comments.order_by("-date_posted")
+        upvoted = False
+        if thread_view.upvote.filter(id=self.request.user.id).exists():
+            upvoted = True
+
+        comment_form = commentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.comment_posted_by = request.user
+            comment.comment_atached_to = thread_view
+            comment.save()
+
+            return redirect('/'+slug+'/',)
+        else:
+            comment_form = comment_form
+
+        return render(
+            request,
+            "thread_page.html",
+            {
+                "thread_view": thread_view,
+                "comments": comments,
+                "commented": True,
                 "upvoted": upvoted,
                 "comment_form": commentForm,
             }

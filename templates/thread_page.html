@@ -27,6 +27,15 @@
     </div>
 </section>
 <!-- make a comment section -->
+{% if commented %}
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-10 text-success text-center border border-success bg-custom-thread mt-3">
+            <p>Your comment has been posted!</p>
+        </div>
+    </div>
+</section>
+{% else %}
 {% if user.is_authenticated %}
 <section class="container mt-3">
         <div class="row justify-content-center">
@@ -54,6 +63,7 @@
             </div>
         </form>
 </section>
+{% endif %}
 {% endif %}
 <!-- Comment section -->
 <section class="container">
