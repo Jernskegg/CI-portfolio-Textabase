@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load my_filters %}
+
+{% block content %}
+<!-- make a comment section -->
+{% if user.is_authenticated %}
+{% if thread_view.thread_starter == user or user.is_staff %}
+<section class="container">
+    <div class="row justify-content-center text-white bg-custom-thread">
+        <div class="col-12 mt-3">
+            <form class="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="row justify-content-center">
+                    <div class="col-10 form-label">{{field.label_tag}}</div>
+                    <div class="col-10 ">{{field|addclass:'form-control'}}</div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-warning float-end m-3 me-5">
+                            Update thread</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endif %}
+{% if not user.is_authenticated %}
+<div class="bg-warning text-center row">
+    <div class="col-12">
+        <h2>
+            Please log into your account to make a new thread.
+            <h2>
+    </div>
+</div>
+{% endif %}
+{% if user.is_authenticated %}
+{% if not thread_view.thread_starter == user or user.is_staff %}
+<div class="bg-warning text-center row">
+    <div class="col-12">
+        <h2>
+            HOLD YOUR HORSES THERE COWBOY, This thread belongs someone else....
+            <h2>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+<!-- Comment section -->
+{%endblock%}

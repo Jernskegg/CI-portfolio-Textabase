@@ -74,10 +74,33 @@ def addThread(request):
             newthread = form.save(commit=False)
             newthread.thread_starter = request.user
             newthread.save()
-            return redirect('home')
+            return redirect('/'+newthread.slug+'/')
     else:
         form = newThreadForm
     context = {
         'form': form,
     }
     return render(request, 'new_thread.html', context)
+
+
+def editThread(request, thread_view_id):
+    edit_thread = get_object_or_404(thread, id=thread_view_id)
+    form = newThreadForm(instance=edit_thread)
+    setform = newThreadForm
+    if request.method == 'POST':
+        form = setform(request.POST, instance=edit_thread)
+        if form.is_valid():
+            newthread = form.save(commit=False)
+            newthread.thread_starter = request.user
+            newthread.save()
+            return redirect('/'+newthread.slug+'/')
+    context = {
+        'form': form,
+    }
+    return render(request, 'edit_thread.html', context)
+
+
+def deleteThread(request, thread_view_id):
+    delete_thread = get_object_or_404(thread, id=thread_view_id)
+    delete_thread.delete()
+    return redirect('home')

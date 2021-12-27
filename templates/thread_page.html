@@ -22,7 +22,15 @@
             </div>
         </div>
         <div class="col-1 bg-custom-thread">
-            <a href="#" class="text-white float-end pt-3"><i class="fas fa-ellipsis-v"></i></a>
+            {% if user.is_authenticated %}
+            {% if thread_view.thread_starter == user or user.is_staff %}
+            <button type="button" data-bs-toggle="dropdown" id="dropdownMenuButton" class="btn text-white float-end fs-3 mt-3 me-2" ><i class="fas fa-ellipsis-h"></i></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="/edit_thread/{{thread_view.id}}">Edit</a></li>
+                <li><a class="dropdown-item" href="/delete_thread/{{thread_view.id}}">Delete</a></li>
+              </ul>
+              {% endif %}
+              {% endif %}
         </div>
     </div>
 </section>
