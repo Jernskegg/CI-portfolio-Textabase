@@ -5,7 +5,7 @@
 {% block content %}
 <!-- make a comment section -->
 {% if user.is_authenticated %}
-{% if thread_view.thread_starter == user or user.is_staff %}
+{% if edit_thread.thread_starter == user or user.is_staff %}
 <section class="container">
     <div class="row justify-content-center text-white bg-custom-thread">
         <div class="col-12 mt-3">
@@ -39,7 +39,7 @@
 </div>
 {% endif %}
 {% if user.is_authenticated %}
-{% if not thread_view.thread_starter == user or user.is_staff %}
+{% if not edit_thread.thread_starter == user or user.is_staff %}
 <div class="bg-warning text-center row">
     <div class="col-12">
         <h2>

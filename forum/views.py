@@ -96,6 +96,7 @@ def editThread(request, thread_view_id):
             return redirect('/'+newthread.slug+'/')
     context = {
         'form': form,
+        'edit_thread': edit_thread,
     }
     return render(request, 'edit_thread.html', context)
 

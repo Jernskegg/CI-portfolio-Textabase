@@ -29,7 +29,6 @@ As an Admin I want to edit a post to fix a post.
 
 # Features
 
-
 # Design and planning
 
 ## wireframes
@@ -55,6 +54,14 @@ Django is a framework that is made to speed up the proccess of building web appl
 # testing
 
 ## code validation
+
+##  automated testing
+
+  I am going to make python automated testing.
+
+## Manual testing
+
+  I have used visual studio, on my computer I don't have NPM installed, so All javascript are going to be manually tested.
 
 ## fixed bugs and issues found.
 
@@ -104,6 +111,8 @@ Django is a framework that is made to speed up the proccess of building web appl
 - Now you have your deployed page. Now you can test if everything works as it should or send the links to your friends to show off those accomplishments you have made.
 
 # My personal achievements and what I feel I need to work on.
+
+I need to work on optimizing time, and make use of my mentor. during this project i've had zero contact with my mentor and changed to a new one.
 
 ## About Commit messages
 

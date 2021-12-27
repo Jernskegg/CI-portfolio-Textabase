@@ -4,7 +4,7 @@
 }
 
 .hero-image {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgb(33, 37, 41)), url("../images/town.png");
+    background: linear-gradient(rgba(0, 0, 0, 0), rgb(33, 37, 41)), url("https://res.cloudinary.com/jernmoln/image/upload/v1640597851/static/images/town.b4b2c4a65d6e.png");
     background-position: 50% 35%;
 }
 /* thread style */
