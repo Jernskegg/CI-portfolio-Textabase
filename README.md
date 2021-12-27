@@ -64,6 +64,9 @@ I've chosen to work with a darker colour scheme, So that catergory colours can p
 ## Diagrams
 ![Model_diagram](docs/diagrams/model_diagram.png)
 
+## 
+
+![data_model](docs/data_model/data_model.png)
 # Technology
 
 ## python
