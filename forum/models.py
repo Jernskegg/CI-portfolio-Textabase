@@ -25,17 +25,12 @@ class thread(models.Model):
                                        related_name='thread_post')
     date_posted = models.DateTimeField(auto_now=True, editable=False)
     content = models.TextField()
-    upvote = models.ManyToManyField(User, related_name="thread_upvotes",
-                                    blank=True, default=False)
 
     class Meta:
         ordering = ["-date_posted"]
 
     def __str__(self):
         return self.title
-
-    def times_upvoted(self):
-        return self.upvote.count()
 
     def save(self):
         self.slug = slugify(self.title)
@@ -48,15 +43,9 @@ class comment(models.Model):
                                            related_name="comments")
     date_posted = models.DateTimeField(auto_now=True, editable=False)
     comment_content = models.TextField(max_length=255)
-    comment_upvote = models.ManyToManyField(User,
-                                            related_name="comment_upvotes",
-                                            blank=True, default=False)
 
     class Meta:
         ordering = ["-date_posted"]
 
     def __str__(self):
         return str(self.comment_content) + str(self.comment_atached_to)
-
-    def times_upvoted(self):
-        return self.comment_upvote.count()

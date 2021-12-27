@@ -8,9 +8,6 @@
     </div>
     <div class="row justify-content-center mb-2 mb-xl-4">
             <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="{% url 'addThread' %}"><i class="fas fa-plus"></i> new thread</a>
-            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-book"></i> my threads</a>
-            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-heart"></i> upvoted</a>
-            <a class="col-5 col-xl-2 btn btn-warning me-1 mb-1" href="#"><i class="fas fa-comment-alt"></i> my comments</a>
     </div>
 </section>
 {% endif %}
@@ -50,14 +47,6 @@
 
                     <div class="col text-center">
                         <a href="{% url 'threads_page' thread.slug %}">read more...</a> 
-                    </div>
-
-                    <div class="col">
-                        <div class="float-end">
-                            {{ thread.upvoted }}
-                            <i class="fas fa-heart"></i>
-                            <i class="far fa-heart"></i>
-                        </div>
                     </div>
                 </div>
             </div>
