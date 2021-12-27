@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import thread
 from .forms import commentForm
+from django.core.paginator import Paginator
 # Create your views here.
 
 
@@ -19,6 +20,9 @@ class threadPage(View):
         queryset = thread.objects
         thread_view = get_object_or_404(queryset, slug=slug)
         comments = thread_view.comments.order_by("-date_posted")
+        paginate_comments = Paginator(comments, 5)
+        page_number = request.GET.get('page')
+        page_obj = paginate_comments.get_page(page_number)
         upvoted = False
         if thread_view.upvote.filter(id=self.request.user.id).exists():
             upvoted = True
@@ -28,10 +32,11 @@ class threadPage(View):
             "thread_page.html",
             {
                 "thread_view": thread_view,
-                "comments": comments,
+                "comments": page_obj,
                 "commented": False,
                 "upvoted": upvoted,
                 "comment_form": commentForm,
+                'page_obj': page_obj,
             }
         )
 
