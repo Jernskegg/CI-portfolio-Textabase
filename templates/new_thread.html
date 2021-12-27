@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load my_filters %}
+
+{% block content %}
+<!-- make a comment section -->
+{% if user.is_authenticated %}
+<section class="container">
+    <div class="row justify-content-center text-white bg-custom-thread">
+        <div class="col-12 mt-3">
+            <form class="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="row justify-content-center">
+                    <div class="col-10 form-label">{{field.label_tag}}</div>
+                    <div class="col-10 ">{{field|addclass:'form-control'}}</div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-warning float-end m-3 me-5">
+                            Create new thread</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="bg-warning text-center row">
+    <div class="col-12">
+        <h2>
+            Please log into your account to make a new thread.
+            <h2>
+    </div>
+</div>
+{% endif %}
+<!-- Comment section -->
+{%endblock%}

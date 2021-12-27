@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import thread
-from .forms import commentForm
+from .forms import commentForm, newThreadForm
 from django.core.paginator import Paginator
 # Create your views here.
 
@@ -41,7 +40,6 @@ class threadPage(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        print(args, kwargs)
         queryset = thread.objects
         thread_view = get_object_or_404(queryset, slug=slug)
         comments = thread_view.comments.order_by("-date_posted")
@@ -74,3 +72,20 @@ class threadPage(View):
                 "comment_form": commentForm,
             }
         )
+
+
+def addThread(request):
+    setform = newThreadForm
+    if request.method == 'POST':
+        form = setform(request.POST or None)
+        if form.is_valid():
+            newthread = form.save(commit=False)
+            newthread.thread_starter = request.user
+            newthread.save()
+            return redirect('home')
+    else:
+        form = newThreadForm
+    context = {
+        'form': form,
+    }
+    return render(request, 'new_thread.html', context)

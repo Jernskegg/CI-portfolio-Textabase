@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -35,6 +36,10 @@ class thread(models.Model):
 
     def times_upvoted(self):
         return self.upvote.count()
+
+    def save(self):
+        self.slug = slugify(self.title)
+        super(thread, self).save()
 
 
 class comment(models.Model):
