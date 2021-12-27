@@ -11,6 +11,8 @@ The project aims to make a forum/thread based web page with possibility to comme
 
 The idea of this page is that it created for a gaming community where users can socialize and have fun.
 
+This page has been made within one week, It is very minimalistic and can has a lot of improvements, But importantly I tried to have different ways of using Django functionality so on View, You will see I tried using different methods of calling the views.
+
 # User Stories
 
 As a user I want to make a comment on a post.
@@ -28,6 +30,27 @@ As an Admin I want to remove a post that broke the board rules.
 As an Admin I want to edit a post to fix a post.
 
 # Features
+
+## Full crud 
+
+  Create, read, update and delete, are all present.
+
+## repeatable templates
+
+    Thanks to djangos template ystem, the page is easy to add more content on.
+
+## pagination
+
+  this page has pagination, to prevent the page from becomeing long and tiring.
+
+# Future features
+
+## Summer-note
+    Summer note can enhance the comments and posts, since this page does not allow for formating.
+
+##  filters
+
+    An ability to be able to filter out catergories and where I've left a comment can be handy.
 
 # Design and planning
 
@@ -51,9 +74,14 @@ Python is an easy and basic programming language, but it is powerful with librar
 
 Django is a framework that is made to speed up the proccess of building web applications, Here you can make apps and then use the apps for different projects. it has en extensive documentation.
 
+It is like a all on in framework or "Batteries included philosophy framework"
+
 # testing
 
 ## code validation
+  During coding i've followed the pep8 guide. naming conventions has been slightly inconsistant
+  Due to django tags, I am going to opt out of testing/validating html
+  Jigsaw validated style.css with out any remarks
 
 ##  automated testing
 
@@ -62,6 +90,16 @@ Django is a framework that is made to speed up the proccess of building web appl
 ## Manual testing
 
   I have used visual studio, on my computer I don't have NPM installed, so All javascript are going to be manually tested.
+
+  Manually testing if post are acting like intented, 
+  This would include, using letters, symbols, numbers.
+  So far everything has been working as intended
+
+  testing on responsiveness using the google chrome developer tools to test out.
+  responsiveness is good, It struggles on landscape mode on a "Galaxy fold" due to its narrows screen, And 4k looks very tiny(I do not have an oppertunity to try it in a real life scenario)
+  
+  the page is very minimalist and relies a lot on the bootstrap functionality
+
 
 ## fixed bugs and issues found.
 
@@ -113,6 +151,7 @@ Django is a framework that is made to speed up the proccess of building web appl
 # My personal achievements and what I feel I need to work on.
 
 I need to work on optimizing time, and make use of my mentor. during this project i've had zero contact with my mentor and changed to a new one.
+And I need to stop being critical over my pages. I disslike my prevouis projects and started from scratch.
 
 ## About Commit messages
 
